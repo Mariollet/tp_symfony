@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ service.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<h1>{{ service.name }}</h1>
+		<h6>{{ service.description }}</h6>
+		<p>Voici tous les employés de ce service :</p>
+
+		<hr>
+		{% for employee in employees %}
+			<div class="card p-4">
+				<img src="/uploads/{{ employee.photo }}" alt="" class="" style="width: 200px;">
+				<ul>
+					<li>
+						Nom :
+						{{ employee.name }}
+						{{ employee.lastName }}
+					</li>
+				</ul>
+				<p>
+					Poste :
+					{{ employee.job }}
+				</p>
+				<p>
+					Bio :
+					{{ employee.bio|raw }}
+				</p>
+			</div>
+
+			<hr>
+		{% endfor %}
+
+		<a href="/service" class="btn btn-outline-primary">Revenir aux services</a>
+	</div>
+{% endblock %}
